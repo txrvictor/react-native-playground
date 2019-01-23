@@ -27,7 +27,7 @@ class EmployeeList extends Component {
         this.dataSource = ds.cloneWithRows(employees);
     }
 
-    renderRow() {
+    renderRow(employee) {
         return <ListItem employee={employee} />;
     }
     
@@ -36,13 +36,13 @@ class EmployeeList extends Component {
             <ListView
                 enableEmptySections
                 dataSource={this.dataSource}
-                render={this.renderRow}
+                renderRow={this.renderRow}
             />
         );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     const employees = _.map(state.employees, (val, uid) => {
         return { ...val, uid };
     });
